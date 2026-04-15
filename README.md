@@ -10,8 +10,9 @@ The files for RustJS are hosted on here and on <a href="https://rustjs.netlify.a
 <script src="https://rustjs.netlify.app/cdn/rust.js/latest"></script>
 ```
 ### npm / Node.js
-Currently not supported in v0.1.
-Support for Node.js will be added in a future release — so stay tuned for that.
+*Currently not supported in v0.1.
+Support for Node.js will be added in a future release — so stay tuned for that.*
+
 ---
 You should be all set now.
 <br>
