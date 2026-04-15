@@ -8,7 +8,6 @@ To install RustJS:<br>
 ```html
 <script src="https://rustjs.netlify.app/rust.js@v0.1"></script>
 ```
-<br>
 You should be all set now.
 <br>
-In order to actually <i>use</i> RustJS, first, call the function `rustjs.init()`. Then to do the conversion, simply run `rustjs.convert()` anywhere after RustJS is initialised. Make sure to add the Rust code you would like to convert as the parameter. The function will return the JavaScript code.
+In order to actually *use* RustJS, first, call the function `rustjs.init()`. Then to do the conversion, simply run `rustjs.convert()` anywhere after RustJS is initialised. Make sure to add the Rust code you would like to convert as the parameter. The function will return the JavaScript code.
