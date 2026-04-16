@@ -188,6 +188,10 @@ ul.navbar li a.link:hover {
         user-select: none;
         -webkit-user-select: none; /* Safari */
         -ms-user-select: none;     /* old Edge */
+        .material-icons, .material-symbols-outlined {
+            font-size: 1.3em;
+            vertical-align: -0.2em;
+        }
     }
     a {
         width: max-content;
@@ -415,4 +419,8 @@ div.centre {
     #epane {
         border-right: 4px solid var(--light3);
     }
+}
+
+.flex {
+    display: flex;
 }
