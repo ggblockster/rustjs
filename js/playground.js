@@ -44,12 +44,15 @@ function runCode() {
     switch (output) {
         case 1:
             let converted = rustjs.convert(editorCode);
+            terminal.classList.remove("lang-js");
             runJS(converted, terminal);
             result = terminal.textContent;
             break;
         case 2:
-            terminal.textContent = rustjs.convert(editorCode);
-            jsOut = terminal.textContent;
+            jsOut = rustjs.convert(editorCode);
+            terminal.textContent = jsOut;
+            terminal.classList.add("lang-js");
+            Prism.highlightElement(terminal);
     }
 }
 
@@ -60,6 +63,7 @@ function switchTabs(id) {
         case 1:
             terminalTab.classList.add("active");
             jsTab.classList.remove("active");
+            terminal.classList.remove("lang-js");
             terminal.textContent = result;
             output = 1;
             break;
@@ -67,6 +71,8 @@ function switchTabs(id) {
             terminalTab.classList.remove("active");
             jsTab.classList.add("active");
             terminal.textContent = jsOut;
+            terminal.classList.add("lang-js");
+            Prism.highlightElement(terminal);
             output = 2;
     }
 }
