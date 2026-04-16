@@ -5,43 +5,163 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RustJS - Home</title>
     <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/prismjs/prism.css">
     <link rel="shortcut icon" href="/img/favicon.svg" type="image/x-icon">
 </head>
 <body>
     <ul class='navbar'>
-    <li class='uri'>
-    <a href='index.html'
-    ><img
-    src='/img/rustjs.svg'
-    alt=''
-    class='site-icon'
-    /></a>
-    RustJS
-    </li>
-    <li>
-    <a href='/'>Home</a>
-    </li>
-    <li><a href='/#about'>About</a></li>
-    <li><a href='/#install'>Install</a></li>
+        <li class='uri'>
+            <a href='index.html'>
+                <img src='/img/rustjs.svg' alt='' class='site-icon' />
+            </a>
+            <a href="/" class="title">RustJS</a>
+        </li>
+        <li>
+            <a href='/' class="link">
+                <i class="material-icons">home</i>
+                Home
+            </a>
+        </li>
+        <li>
+            <a href='/#about' class="link">
+                <i class="material-icons">info</i>
+                About
+            </a>
+        </li>
+        <li>
+            <a href='/#install' class="link">
+                <i class="material-icons">download</i>
+                Install
+            </a>
+        </li>
+        <li>
+            <a href='/playground' target="_blank" class="link">
+                <i class="material-icons">widgets</i>
+                Playground
+            </a>
+        </li>
     </ul>
     <div id="banner">
         <img src="/img/dark.svg" alt="">
         <h1>RustJS</h1>
     </div>
-    <div class="sect">
-        <h2>What is RustJS?</h2>
+    <div class="sect" id="about">
+        <h2>
+            <i class="material-icons">info</i>
+            What is RustJS?
+        </h2>
         <p>
-            RustJS is an engine that will convert Rust code into JavaScript code, so that it can run directly on the browser without issues instead of heavy web-assembly. It's also open-source, so if you'd like to suggest any changes, please make a pull request on GitHub.
+            RustJS is an engine that is able to convert Rust code into native JavaScript, so that it can run directly on the browser without issues instead of heavy web-assembly. This project is also open-source, so if you'd like to suggest any changes, please, consider making a pull request on GitHub.
         </p>
         <a href="https://github.com/ggblockster/rustjs/tree/main" target="_blank">
             <button>View On GitHub</button>
         </a>
     </div>
     <div class="sect">
-        <h2>Does it contain <i>all</i> of Rust?</h2>
+        <h2>
+            <i class="material-icons">help</i>
+            Does it contain <i>all</i> of Rust?
+        </h2>
         <p>
             Currently, no. Some parts may be tricky to implement, but some core features are there and (hopefully) everything will have been implemented some time into the near future.
         </p>
     </div>
+    <div class="sect" id="install">
+        <h2>
+            <i class="material-icons">download</i>
+            How to Install
+            <span class="light">
+                (Also in
+                <a href="https://github.com/ggblockster/rustjs/blob/main/README.md" target="_blank">
+                    README.md</a>)
+            </span>
+        </h2>
+        <h3>Static</h3>
+        <p>
+            The files for RustJS are hosted on this very site, so to install RustJS, all you need to do is:
+            <br>
+            <ul style="list-style: decimal;">
+                <li>
+                    Add a <code>&lt;<span class="token attr-name">script</span>></code> tag inside your HTML file. Place it before any runner files to avoid scope errors.
+                </li>
+                <li>
+                    Set the source of the script to the latest version of RustJS. This site will automatically serve the latest version of RustJS if specified.
+                </li>
+            </ul>
+        </p>
+        <pre><code class="lang-html">
+            &lt;script src="https://rustjs.netlify.app/cdn/rust.js/latest">&lt;/script>
+        </code></pre>
+        <p>
+            You should be all set now.
+            In order to actually use RustJS, first, call the function <code>rustjs.<span class="token function">init</span>()</code>. Then to do the conversion, simply add <code>rustjs.<span class="token function">convert</span>()</code> anywhere after RustJS is initialised. Make sure to add the Rust code you would like to convert as the parameter. The function will return the JavaScript code.
+        </p>
+        <h3>npm / Node.js</h3>
+        <p>
+            <i>Currently not supported in v0.1.<br>
+            Support for Node.js will be added in a future release &mdash; so stay tuned for that.</i>
+        </p>
+    </div>
+    <div class="sect">
+        <h2>
+            <i class="material-icons">integration_instructions</i>
+            Using RustJS
+        </h2>
+        <p>
+            Using RustJS is simple. To initialise, simply call <code>rustjs.<span class="token function">init</span>()</code>. And to convert any code directly to JavaScript, all you have to do is call <code>rustjs.<span class="token function">convert</span>()</code>.
+            <br>Below shows an example involving Microsoft's Monaco Editor.
+        </p>
+        <pre><code class="lang-js">
+            // Initialise the package:
+            rustjs.init();
+            // Monaco Example (assuming it already exists):
+            rustjs.convert(window.editor.getValue());
+        </code></pre>
+    </div>
+    <div class="sect last">
+        <h2>Using Older Versions</h2>
+        <p>
+            If for some reason you'd like to use an older version of RustJS, all you need to do is swap <code>latest</code> for the version you would like to use. Any non-existent versions will automatically serve the latest. So for example, if you wanted <code>v0.1</code>, then simply put the following in your code.
+        </p>
+        <pre><code class="lang-html">
+            &lt;script src="https://rustjs.netlify.app/cdn/rust.js/v0.1">&lt;/script>
+        </code></pre>
+
+        <h3>All Available Versions</h3>
+        <table>
+            <tr>
+                <th>Version Number</th>
+                <th>CDN</th>
+            </tr>
+            <tr>
+                <td>Latest</td>
+                <td>
+                    <a href="https://rustjs.netlify.app/cdn/rust.js/latest" target="_blank" rel="noopener noreferrer">https://rustjs.netlify.app/cdn/rust.js/latest<i class="material-icons">open_in_new</i></a>
+                </td>
+            </tr>
+            <tr>
+                <td>v0.1</td>
+                <td><a href="https://rustjs.netlify.app/cdn/rust.js/v0.1" target="_blank" rel="noopener noreferrer">https://rustjs.netlify.app/cdn/rust.js/v0.1<i class="material-icons">open_in_new</i></a></td>
+            </tr>
+        </table>
+    </div>
+    <div class="footer-gap"></div>
+    <div class="footer">
+        <div class="content">
+            Made by ggblockster.
+            <div class="flist">
+                <a href="/docs" target="_blank">
+                    Docs
+                    <i class="material-icons">open_in_new</i></a>
+                <a href="/license" target="_blank">
+                    License
+                    <i class="material-icons">open_in_new</i></a>
+                <a href="https://github.com/ggblockster/rustjs/tree/main" target="_blank" class="last">
+                    GitHub
+                    <i class="material-icons">open_in_new</i></a>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="/prismjs/prism.js"></script>
 </html>
