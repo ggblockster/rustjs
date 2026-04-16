@@ -4,8 +4,8 @@ code[class*="language-"],
 pre[class*="language-"] {
   color: #ccc;
   background: 0 0;
-  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 1em;
+  font-family: var(--mono), monospace;
+  font-size: 0.9em;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -29,6 +29,10 @@ pre[class*="language-"] {
 pre[class*="language-"] {
   background: #2d2d2d;
   border-radius: 0.8em;
+  ::selection {
+	color: currentColor;
+	background-color: #37667460;
+  }
 }
 :not(pre) > code[class*="language-"] {
   padding: 0.1em;
@@ -41,6 +45,7 @@ pre[class*="language-"] {
 .token.doctype,
 .token.prolog {
   color: #999;
+  font-style: italic;
 }
 .token.punctuation {
   color: #ccc;
