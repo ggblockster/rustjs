@@ -5,7 +5,8 @@ RustJS aims to be an engine that will convert Rust code into JavaScript code, so
 ### Static
 The files for RustJS are hosted on here and on <a href="https://rustjs.netlify.app/"></a>, so to install RustJS, all you need to do is:<br>
   1. Add a `<script>` tag inside your HTML file. Place it before any runner files to avoid scope errors.
-  2. Set the source of the script to the latest version of RustJS, so in this case, that would be v0.1.
+  2. Set the source of the script to the latest version of RustJS, so all you need to do is set the version to `latest`.
+      NOTE: If you rely on a feature that becomes deprecated, it's recommended that you use a static version instead.
 ```html
 <script src="https://rustjs.netlify.app/cdn/rust.js/latest"></script>
 ```
