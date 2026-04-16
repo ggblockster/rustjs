@@ -60,6 +60,7 @@ rustjs.convert = function(code) {
     /* loops */
     out = out.replace(/\bloop\s*\{/g, "while (true) {");
     /* while loops */
-    out = out.replace(/\bwhile (.+?) { (.+?) } /g, "while ($1) { $2 }")
+    out = out.replace(/\bwhile (.+?) { (.+?) } /g, "while ($1) { $2 }");
+    out = out + "\n\nmain();"
     return out;
 }
