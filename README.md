@@ -16,4 +16,4 @@ Support for Node.js will be added in a future release — so stay tuned for that
 ---
 You should be all set now.
 <br>
-In order to actually *use* RustJS, first, call the function `rustjs.init()`. Then to do the conversion, simply run `rustjs.convert()` anywhere in your code after the point in which RustJS is initialised. Make sure to add the Rust code you would like to convert as the parameter. The function will return the JavaScript code.
+In order to actually *use* RustJS, first, call the function `rustjs.init()`. Then to do the conversion, simply run `rustjs.convert()` anywhere in your code after the point in which RustJS is initialised. Make sure to add the Rust code you would like to convert as the parameter. The function will return the JavaScript code that is the direct conversion of what the input Rust code was.
