@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustJS - Playground</title>
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/prismjs/prism.css">
+    <link rel="shortcut icon" href="/img/favicon.svg" type="image/x-icon">
+</head>
+<body>
+    <ul class='navbar'>
+        <li class='uri'>
+            <a href='index.html'>
+                <img src='/img/rustjs.svg' alt='' class='site-icon' />
+            </a>
+            <a href="/" class="title">RustJS</a>
+        </li>
+        <li>
+            <a href='/' class="link">
+                <i class="material-icons">home</i>
+                Home
+            </a>
+        </li>
+        <li>
+            <a href='/#about' class="link">
+                <i class="material-icons">info</i>
+                About
+            </a>
+        </li>
+        <li>
+            <a href='/#install' class="link">
+                <i class="material-icons">download</i>
+                Install
+            </a>
+        </li>
+        <li>
+            <a href='/playground' class="link">
+                <i class="material-icons">widgets</i>
+                Playground
+            </a>
+        </li>
+    </ul>
+
+    <div class="playground">
+        <div id="epane">
+            <div id="toolbar">
+                main.rs
+                <button id="run">
+                    <i class="material-icons">play_arrow</i>
+                    Run Code
+                </button>
+            </div>
+            <div id="editor"></div>
+        </div>
+        <div id="tpane">
+            <div id="tabs">
+                <div id="tab1" class="tab active">
+                    <i class="material-icons">terminal</i>
+                    Output
+                </div>
+                <div id="tab2" class="tab">
+                    <i class="material-icons">javascript</i>
+                    JavaScript
+                </div>
+            </div>
+            <div id="terminal"></div>
+        </div>
+    </div>
+
+    <!-- Load Monaco Editor from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
+  <script>
+    // Configure Monaco's AMD loader
+    require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs' } });
+
+    // Load Monaco and initialize
+    require(['vs/editor/editor.main'], function () {
+        monaco.editor.defineTheme('rustjs', {
+        base: 'vs-dark',
+        inherit: true,
+
+        rules: [
+            // comments (italic handled via fontStyle)
+            { token: 'comment', foreground: '999999', fontStyle: 'italic' },
+
+            // punctuation
+            { token: 'delimiter', foreground: 'cccccc' },
+            { token: 'punctuation', foreground: 'cccccc' },
+
+            // attribute-name / deleted / namespace / tag
+            { token: 'attribute.name', foreground: 'e2777a' },
+            { token: 'tag', foreground: 'e2777a' },
+            { token: 'metatag', foreground: 'e2777a' },
+            { token: 'namespace', foreground: 'e2777a' },
+            { token: 'deleted', foreground: 'e2777a' },
+
+            // function-name
+            { token: 'entity.name.function', foreground: '6196cc' },
+            { token: 'support.function', foreground: '6196cc' },
+
+            // boolean / function / number
+            { token: 'constant.language.boolean', foreground: 'f08d49' },
+            { token: 'constant.numeric', foreground: 'f08d49' },
+            { token: 'function', foreground: 'f08d49' },
+
+            // class-name / property / constant / symbol
+            { token: 'entity.name.class', foreground: 'f8c555' },
+            { token: 'support.type', foreground: 'f8c555' },
+            { token: 'variable.other.constant', foreground: 'f8c555' },
+            { token: 'constant', foreground: 'f8c555' },
+            { token: 'symbol', foreground: 'f8c555' },
+            { token: 'variable.other.property', foreground: 'f8c555' },
+
+            // at-rule / built-in / keyword / selector
+            { token: 'keyword', foreground: 'cc99cd' },
+            { token: 'storage', foreground: 'cc99cd' },
+            { token: 'keyword.control.at-rule', foreground: 'cc99cd' },
+            { token: 'support.builtin', foreground: 'cc99cd' },
+            { token: 'selector', foreground: 'cc99cd' },
+
+            // string / variable / regex / character / attribute value
+            { token: 'string', foreground: '7ec699' },
+            { token: 'variable', foreground: '7ec699' },
+            { token: 'string.regexp', foreground: '7ec699' },
+            { token: 'string.quoted', foreground: '7ec699' },
+            { token: 'attribute.value', foreground: '7ec699' },
+
+            // entity / operator / url
+            { token: 'entity', foreground: '67cdcc' },
+            { token: 'operator', foreground: '67cdcc' },
+            { token: 'url', foreground: '67cdcc' },
+
+            // important (bold)
+            { token: 'keyword.important', fontStyle: 'bold' },
+            { token: 'important', fontStyle: 'bold' }
+        ],
+
+        colors: {
+            'editor.background': '#2d2d2d',
+            'editor.foreground': '#cccccc',
+
+            'editor.selectionBackground': '#44475a',
+            'editor.lineHighlightBackground': '#3a3a3a',
+
+            'editorCursor.foreground': '#cccccc',
+            'editorWhitespace.foreground': '#555555'
+        }
+    });
+
+        window.editor = monaco.editor.create(document.getElementById('editor'), {
+        value: `fn main() {\n\tprintln!("Hello, Rust!");\n}\n\n// Write your Rust code here...`,
+        language: 'rust', // Rust syntax highlighting
+        theme: 'rustjs', // custom theme
+        fontFamily: 'Roboto Mono',
+        automaticLayout: true // Adjusts to container size
+      });
+    });
+  </script>
+
+    <div class="footer">
+        <div class="content">
+            Made by ggblockster.
+            <div class="flist">
+                <a href="/docs" target="_blank">
+                    Docs
+                    <i class="material-icons">open_in_new</i></a>
+                <a href="/license" target="_blank">
+                    License
+                    <i class="material-icons">open_in_new</i></a>
+                <a href="https://github.com/ggblockster/rustjs/tree/main" target="_blank" class="last">
+                    GitHub
+                    <i class="material-icons">open_in_new</i></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://rustjs.netlify.app/cdn/rustjs/latest"></script>
+<script src="/prismjs/prism.js"></script>
+<script src="/js/playground.js"></script>
+</html>
